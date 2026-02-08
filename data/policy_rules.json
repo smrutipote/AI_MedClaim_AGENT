@@ -1,0 +1,149 @@
+{
+  "policy_rules": [
+    {
+      "rule_id": "RULE-001",
+      "category": "GP_VISITS",
+      "plan": "Simply Connect Plus",
+      "title": "GP Visits Coverage",
+      "description": "50% cover up to €30 per visit. Maximum 10 GP visits per policy year. No referral required. Direct reimbursement available. Prescription charges not covered.",
+      "coverage_percentage": 50,
+      "max_claim_per_visit": 30,
+      "annual_limit_visits": 10,
+      "requires_referral": false,
+      "claim_process": "Submit receipts via app or member area within 12 months"
+    },
+    {
+      "rule_id": "RULE-002",
+      "category": "CONSULTANT_VISITS",
+      "plan": "Simply Connect Plus",
+      "title": "Consultant Out-patient Visits",
+      "description": "50% refund of costs. GP referral letter required (valid for 6 months). Must be from a registered consultant. Subject to €500 annual out-patient cap.",
+      "coverage_percentage": 50,
+      "requires_referral": true,
+      "referral_validity_months": 6,
+      "annual_cap": 500,
+      "rejection_reasons": [
+        "No GP referral letter provided",
+        "Referral expired (older than 6 months)",
+        "Consultant not registered with Laya",
+        "Receipt not stamped/headed paper"
+      ]
+    },
+    {
+      "rule_id": "RULE-003",
+      "category": "MRI_SCANS",
+      "plan": "Simply Connect Plus",
+      "title": "MRI/CT Diagnostic Scans",
+      "description": "Full cover in participating centers with Direct Settlement. GP or Consultant referral required. Clinical indicators must be met. Beacon Hospital included.",
+      "coverage_percentage": 100,
+      "requires_referral": true,
+      "requires_clinical_indicators": true,
+      "participating_centers": ["Beacon Hospital", "Mater Private", "Blackrock Clinic"],
+      "rejection_reasons": [
+        "No referral letter attached",
+        "Clinical indicators not met",
+        "Non-participating center used",
+        "Scan not medically necessary"
+      ]
+    },
+    {
+      "rule_id": "RULE-004",
+      "category": "PHYSIOTHERAPY",
+      "plan": "Simply Connect Plus",
+      "title": "Physiotherapy Sessions",
+      "description": "50% refund of costs. Therapist must be registered with Irish Society of Chartered Physiotherapists or CORU. Subject to €500 annual out-patient cap. No referral required for initial assessment.",
+      "coverage_percentage": 50,
+      "requires_referral": false,
+      "annual_cap": 500,
+      "approved_associations": ["Irish Society of Chartered Physiotherapists", "CORU Physiotherapists Board"],
+      "rejection_reasons": [
+        "Therapist not registered",
+        "Receipt missing stamp/letterhead",
+        "Annual €500 cap exceeded"
+      ]
+    },
+    {
+      "rule_id": "RULE-005",
+      "category": "HOSPITAL_DAYCASE",
+      "plan": "Simply Connect Plus",
+      "title": "Day-case Hospital Treatment",
+      "description": "Full cover in public and private hospitals. €50 excess for private day-case. Direct settlement available. Consultant fees fully covered if using participating consultant.",
+      "coverage_percentage": 100,
+      "private_hospital_excess": 50,
+      "requires_referral": true,
+      "direct_settlement": true,
+      "rejection_reasons": [
+        "Treatment could have been done as out-patient",
+        "Non-participating hospital",
+        "No prior authorization for hi-tech hospitals"
+      ]
+    },
+    {
+      "rule_id": "RULE-006",
+      "category": "RECEIPT_REQUIREMENTS",
+      "plan": "All Plans",
+      "title": "Receipt Submission Rules",
+      "description": "All receipts must be submitted within 12 months from end of policy year. Must be on stamped or headed paper. Must show: Date, Provider name, Treatment type, Cost, Patient name.",
+      "submission_deadline_months": 12,
+      "required_fields": ["Date of treatment", "Provider name/stamp", "Treatment description", "Cost breakdown", "Patient name"],
+      "rejection_reasons": [
+        "Receipt submitted after 12-month deadline",
+        "Receipt not on headed paper/unstamped",
+        "Missing required fields (date/provider/cost)",
+        "Receipt illegible or damaged",
+        "Duplicate claim"
+      ]
+    },
+    {
+      "rule_id": "RULE-007",
+      "category": "WAITING_PERIODS",
+      "plan": "All Plans",
+      "title": "Waiting Periods for New Members",
+      "description": "Accident/injury: Immediate cover. New illness after membership: 26 weeks. Pre-existing conditions: 5 years. Maternity: 12 months (under 55).",
+      "accident_waiting_days": 0,
+      "new_illness_waiting_weeks": 26,
+      "pre_existing_waiting_years": 5,
+      "maternity_waiting_months": 12
+    },
+    {
+      "rule_id": "RULE-008",
+      "category": "PRE_EXISTING_CONDITIONS",
+      "plan": "All Plans",
+      "title": "Pre-existing Condition Definition",
+      "description": "An ailment where signs/symptoms existed in 6 months before: (a) first health insurance, (b) rejoining after 13+ week gap, (c) upgrading to higher cover. Medical advisors determine pre-existing status.",
+      "lookback_period_months": 6,
+      "coverage_gap_triggers_weeks": 13,
+      "rejection_reasons": [
+        "Condition existed within 6 months of joining",
+        "Symptoms documented before policy start",
+        "Treatment for same condition in last 6 months",
+        "Medical records show pre-existing diagnosis"
+      ]
+    },
+    {
+      "rule_id": "RULE-009",
+      "category": "OUTPATIENT_CAP",
+      "plan": "Simply Connect Plus",
+      "title": "Annual Out-patient Expense Cap",
+      "description": "€500 maximum refund per member per year for everyday medical expenses. €1 annual excess applies first. Some benefits exempt (maternity, cancer, child healthcare).",
+      "annual_cap": 500,
+      "annual_excess": 1,
+      "exempt_benefits": ["Maternity consultations", "Cancer accommodation", "Child healthcare support", "2 HSE GP out-of-hours visits"]
+    },
+    {
+      "rule_id": "RULE-010",
+      "category": "CLINICAL_INDICATORS",
+      "plan": "All Plans",
+      "title": "Clinical Indicators for Procedures",
+      "description": "Certain procedures require clinical indicators from GP/Consultant to justify medical necessity. Must match Schedule of Benefits. Examples: MRI (neurological symptoms), Orthopedic surgery (failed conservative treatment).",
+      "requires_approval": true,
+      "check_before_booking": true,
+      "rejection_reasons": [
+        "Clinical indicators not provided",
+        "Indicators do not match Schedule of Benefits",
+        "Treatment not medically necessary",
+        "Conservative treatment not attempted first"
+      ]
+    }
+  ]
+}
