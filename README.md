@@ -105,16 +105,9 @@ member documents, which is within the 30-day policy requirement."
 
 
 Project Structure
-text
-AI_MedClaim_AGENT/
-├── main.py                    # FastAPI backend entry point
-├── agent.py                   # LangGraph agent definition
-├── tools.py                   # 5 custom database tools
-├── config.py                  # Environment configuration
-├── requirements.txt           # Python dependencies
-├── .env.example              # Configuration template
-├── .gitignore                # Git exclusions
-└── README.md                 # This file
+
+<img width="456" height="681" alt="Screenshot 2026-02-09 at 2 28 58 PM" src="https://github.com/user-attachments/assets/1c556332-6e66-4174-b7c1-16dbf6b3ef5d" />
+
 
 
 🤖 Core Components
