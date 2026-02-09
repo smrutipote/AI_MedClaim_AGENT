@@ -2,12 +2,14 @@
 
 Code in Master Branch
 
-🎯 Laya Healthcare AI Claims Agent
-Autonomous AI system that investigates rejected medical claims, cross-references policy documents, finds missing referrals, and auto-approves valid claims in 10 seconds.
+https://aipoweredmedicalclaims.vercel.app/
+input examples: 
+1. Check claim CLM-2026-022. Why was it rejected? Can we approve it?
+2. Member LAYA-1002 has multiple claims. Are any of them rejected incorrectly based on our policies?
+3. John Doe submitted a €150 physiotherapy claim. Check if he's already used up his annual physio benefits and tell me how much we should approve.
 
-[
-[
-[
+Laya Healthcare AI Claims Agent
+Autonomous AI system that investigates rejected medical claims, cross-references policy documents, finds missing referrals, and auto-approves valid claims in 10 seconds.
 
 🎯 Overview
 This system revolutionizes medical claims processing by:
@@ -179,7 +181,6 @@ search_member_documents	Cosmos DB	Find referrals/receipts
 update_claim_status	Azure SQL	Approve/reject claims
 4. AI Brain (GPT-4o)
 Reads user queries
-
 Decides which tools to call
 
 Analyzes results
