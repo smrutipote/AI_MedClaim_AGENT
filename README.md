@@ -32,7 +32,7 @@ Test it live: https://aipoweredmedicalclaims.vercel.app
 Ask the agent: "Check claim CLM-2026-022. If rejected, investigate why and approve if possible."
 
 🏗️ Architecture & Data Flow
-text<img width="759" height="724" alt="Screenshot 2026-02-09 at 2 19 45 PM" src="https://github.com/user-attachments/assets/1c0f04e5-2181-49cb-b049-33a6eb25c77a" />
+
 <img width="759" height="724" alt="Screenshot 2026-02-09 at 2 19 45 PM" src="https://github.com/user-attachments/assets/1c0f04e5-2181-49cb-b049-33a6eb25c77a" />
 
 
