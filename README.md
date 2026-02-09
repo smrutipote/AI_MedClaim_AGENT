@@ -9,7 +9,7 @@ input examples:
 2. Member LAYA-1002 has multiple claims. Are any of them rejected incorrectly based on our policies?
 3. John Doe submitted a €150 physiotherapy claim. Check if he's already used up his annual physio benefits and tell me how much we should approve.
 
-Laya Healthcare AI Claims Agent
+Healthcare AI Claims Agent
 Autonomous AI system that investigates rejected medical claims, cross-references policy documents, finds missing referrals, and auto-approves valid claims in 10 seconds.
 
 Overview
