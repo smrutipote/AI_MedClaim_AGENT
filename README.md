@@ -11,7 +11,7 @@ input examples:
 Laya Healthcare AI Claims Agent
 Autonomous AI system that investigates rejected medical claims, cross-references policy documents, finds missing referrals, and auto-approves valid claims in 10 seconds.
 
-🎯 Overview
+Overview
 This system revolutionizes medical claims processing by:
 
 🔍 Intelligent Investigation - Automatically finds and analyzes rejected claims
@@ -31,58 +31,10 @@ Test it live: https://aipoweredmedicalclaims.vercel.app
 Ask the agent: "Check claim CLM-2026-022. If rejected, investigate why and approve if possible."
 
 🏗️ Architecture & Data Flow
-text
-┌──────────────────────────────────────────────────────────────┐
-│                    USER QUERY                                │
-│   "Check claim CLM-2026-022 and approve if possible"         │
-└────────────────────────┬─────────────────────────────────────┘
-                         │
-                         ▼
-┌──────────────────────────────────────────────────────────────┐
-│                 FRONTEND (Vercel)                            │
-│  ┌────────────────────────────────────────────────────────┐  │
-│  │  React Chat Interface + ExplainAI Panel               │  │
-│  │  - User input handling                                 │  │
-│  │  - Real-time response display                          │  │
-│  │  - Reasoning step visualization                        │  │
-│  └────────────────────────────────────────────────────────┘  │
-└────────────────────────┬─────────────────────────────────────┘
-                         │ HTTPS POST /api/query
-                         ▼
-┌──────────────────────────────────────────────────────────────┐
-│              BACKEND (Azure App Service)                     │
-│  ┌────────────────────────────────────────────────────────┐  │
-│  │  FastAPI Endpoint                                      │  │
-│  │  - Request validation                                  │  │
-│  │  - Session management                                  │  │
-│  └────────────────────┬───────────────────────────────────┘  │
-│                       │                                       │
-│  ┌────────────────────▼───────────────────────────────────┐  │
-│  │  LangGraph Agent (Orchestrator)                        │  │
-│  │  - State management                                    │  │
-│  │  - Tool routing                                        │  │
-│  │  - Workflow control                                    │  │
-│  └────────────────────┬───────────────────────────────────┘  │
-│                       │                                       │
-│  ┌────────────────────▼───────────────────────────────────┐  │
-│  │  GPT-4o (The Brain)                                    │  │
-│  │  - Reasoning & decision-making                         │  │
-│  │  - Tool selection                                      │  │
-│  │  - Natural language generation                         │  │
-│  └────────────────────┬───────────────────────────────────┘  │
-└───────────────────────┼───────────────────────────────────────┘
-                        │
-        ┌───────────────┼───────────────┐
-        │               │               │
-        ▼               ▼               ▼
-┌──────────────┐ ┌──────────────┐ ┌──────────────┐
-│  Azure SQL   │ │  Cosmos DB   │ │ AI Search    │
-│              │ │              │ │              │
-│ Claims Data  │ │ Member Docs  │ │ Policies     │
-│ - Structured │ │ - PDFs       │ │ - Vector DB  │
-│ - Receipts   │ │ - Referrals  │ │ - Semantic   │
-│ - Status     │ │ - Scans      │ │   Search     │
-└──────────────┘ └──────────────┘ └──────────────┘
+text<img width="759" height="724" alt="Screenshot 2026-02-09 at 2 19 45 PM" src="https://github.com/user-attachments/assets/1c0f04e5-2181-49cb-b049-33a6eb25c77a" />
+<img width="759" height="724" alt="Screenshot 2026-02-09 at 2 19 45 PM" src="https://github.com/user-attachments/assets/1c0f04e5-2181-49cb-b049-33a6eb25c77a" />
+
+
 🔄 How It Works - Complete Flow
 User Query Processing
 text
@@ -148,7 +100,10 @@ GPT-4o: "Claim CLM-2026-022 has been APPROVED for €30.00.
 Why rejected: Missing GP referral
 Why approved: I found the referral dated Jan 3, 2026 in 
 member documents, which is within the 30-day policy requirement."
-📁 Project Structure
+
+
+
+Project Structure
 text
 AI_MedClaim_AGENT/
 ├── main.py                    # FastAPI backend entry point
@@ -159,6 +114,8 @@ AI_MedClaim_AGENT/
 ├── .env.example              # Configuration template
 ├── .gitignore                # Git exclusions
 └── README.md                 # This file
+
+
 🤖 Core Components
 1. FastAPI Backend (main.py)
 python
@@ -167,11 +124,13 @@ async def query_agent(request: QueryRequest):
     # Receives user queries
     # Calls LangGraph agent
     # Returns AI response
-2. LangGraph Agent (agent.py)
+   
+3. LangGraph Agent (agent.py)
 python
 # Orchestrates tool calls
 # Manages conversation state
 # Routes between GPT-4o and tools
+
 3. Custom Tools (tools.py)
 Tool	Database	Purpose
 search_claims	Azure SQL	Find claims by ID/member
@@ -179,38 +138,29 @@ get_member_profile	Cosmos DB	Retrieve member information
 search_policies	AI Search	Semantic policy search
 search_member_documents	Cosmos DB	Find referrals/receipts
 update_claim_status	Azure SQL	Approve/reject claims
-4. AI Brain (GPT-4o)
+
+5. AI Brain (GPT-4o)
 Reads user queries
 Decides which tools to call
-
 Analyzes results
-
 Makes approval decisions
-
 Generates explanations
 
 🛠️ Tech Stack
 Frontend
 Framework: React + TypeScript (built with Lovable)
-
 Styling: Tailwind CSS
-
 Hosting: Vercel (CDN + auto-deploys)
 
 Backend
 API: FastAPI (Python 3.11)
-
 Orchestration: LangGraph
-
 AI Model: GPT-4o (Azure OpenAI)
-
 Hosting: Azure App Service
 
 Data Layer
 Structured Data: Azure SQL Database
-
 Documents: Azure Cosmos DB (NoSQL)
-
 Semantic Search: Azure AI Search (vector embeddings)
 
 Why These Choices?
@@ -221,27 +171,32 @@ Azure SQL	PostgreSQL	HIPAA-certified, free tier, integrated auth
 Cosmos DB	MongoDB	Document partitioning, global distribution
 AI Search	ElasticSearch	Native vector search, Azure integration
 FastAPI	Flask	Async support for parallel tool calls
-🚀 Quick Start
+
 Prerequisites
 bash
 Python 3.11+
 Azure Account (free tier)
 OpenAI API access
+
 1. Clone Repository
 bash
 git clone https://github.com/smrutipote/AI_MedClaim_AGENT.git
 cd AI_MedClaim_AGENT
-2. Setup Environment
+
+3. Setup Environment
 bash
 cp .env.example .env
 # Fill in your Azure credentials
+
 3. Install Dependencies
 bash
 pip install -r requirements.txt
-4. Run Backend
+
+5. Run Backend
 bash
 uvicorn main:app --reload
-5. Test API
+
+7. Test API
 bash
 curl -X POST http://localhost:8000/api/query \
   -H "Content-Type: application/json" \
@@ -249,6 +204,8 @@ curl -X POST http://localhost:8000/api/query \
     "query": "Show me claim CLM-2026-001",
     "thread_id": "test-session"
   }'
+
+
 ⚙️ Configuration
 Environment Variables (.env)
 bash
@@ -270,6 +227,8 @@ SEARCH_KEY=your_key
 AZURE_OPENAI_ENDPOINT=https://your-openai.openai.azure.com/
 AZURE_OPENAI_API_KEY=your_key
 AZURE_OPENAI_DEPLOYMENT=your_deployment_name
+
+
 📊 Database Schema
 Azure SQL - Claims Table
 sql
@@ -303,6 +262,8 @@ json
   "vector": [0.123, 0.456, ...],
   "category": "physiotherapy"
 }
+
+
 🎭 Demo Scenarios
 Scenario 1: Auto-Approval
 text
@@ -325,70 +286,13 @@ Processing Time	3 days	10 seconds	25,920x faster
 Rejection Rate	30%	10%	20% auto-fixed
 Manual Work	15 min/claim	0 min/claim	100+ hours/month saved
 Audit Trail	Incomplete	100% logged	Full compliance
-🔐 Security & Compliance
-✅ HIPAA Certified - Azure SQL and Cosmos DB
-
-✅ GDPR Compliant - EU data centers, data residency
-
-✅ Audit Trail - Every decision logged with reasoning
-
-✅ Access Control - Azure AD integration ready
-
-✅ Encryption - TLS 1.3 in transit, AES-256 at rest
-
-🛡️ Error Handling
-Network Failures
-python
-# Automatic retry with exponential backoff
-# Falls back to cached data if available
-Missing Data
-python
-# Graceful degradation
-# Clear error messages to user
-Invalid Queries
-python
-# Query validation before processing
-# Helpful suggestions for corrections
-📝 API Documentation
-POST /api/query
-Request:
-
-json
-{
-  "query": "Check claim CLM-2026-001",
-  "thread_id": "user-session-123"
-}
-Response:
-
-json
-{
-  "response": "Claim CLM-2026-001 belongs to John Doe...",
-  "thread_id": "user-session-123"
-}
-🎓 Built In 8 Hours
-Timeline:
-
-Hour 1-2: Azure infrastructure setup
-
-Hour 3-4: LangGraph agent + tools
-
-Hour 5-6: Database population + testing
-
-Hour 7-8: Frontend deployment + polish
-
-Total Cost: €0 (free tiers only)
 
 🚧 Future Enhancements
  Add authentication (Azure AD B2C)
-
  Multi-language support
-
  Batch claim processing
-
  Mobile app (React Native)
-
  Advanced analytics dashboard
-
  Integration with existing systems
 
 📄 License
