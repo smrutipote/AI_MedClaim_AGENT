@@ -3,6 +3,7 @@
 Code in Master Branch
 
 https://aipoweredmedicalclaims.vercel.app/
+
 input examples: 
 1. Check claim CLM-2026-022. Why was it rejected? Can we approve it?
 2. Member LAYA-1002 has multiple claims. Are any of them rejected incorrectly based on our policies?
